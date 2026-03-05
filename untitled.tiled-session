@@ -11,7 +11,7 @@
     "fileStates": {
         "D:/Dev/Tutorial/cppGameFunds/maps/beachmap.tmx": {
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 464.6666666666666,
                 "y": 296
