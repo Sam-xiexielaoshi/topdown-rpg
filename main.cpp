@@ -19,6 +19,9 @@ int main(){
     Vector2 bgPos{0.0,0.0};
     float Speed{4.0};
 
+    Texture2D knight = LoadTexture("character/knight_idle_spritesheet.png");
+    Vector2 knightPos{windowDimensions[0]/2.0f -4.0f * (0.5* (float)knight.width/6.0), windowDimensions[1]/2.0f - 4.0f *(0.5*(float)knight.height)};
+
     while(!WindowShouldClose()){
         BeginDrawing();
         ClearBackground(RAYWHITE);
@@ -30,7 +33,6 @@ int main(){
         if(IsKeyDown(KEY_S)) directions.y+=1.0;
         if(Vector2Length(directions)!=0.0){
             //set bgPos = bgPos - directions
-            
             bgPos=Vector2Subtract(bgPos, Vector2Scale(Vector2Normalize(directions), Speed));
         }
 
@@ -39,6 +41,11 @@ int main(){
 
         //draw the background
         DrawTextureEx(map, bgPos, 0.0,4.0,WHITE);
+
+        //draw the caracter
+        Rectangle source{0.f,0.f,(float)knight.width/6.0f,(float)knight.height};
+        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/6.0f, 4.0f * (float)knight.height};
+        DrawTexturePro(knight, source, dest, Vector2{},0.f,WHITE);
 
         EndDrawing();
     }
