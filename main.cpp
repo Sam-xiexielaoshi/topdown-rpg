@@ -19,6 +19,9 @@ int main(){
     Vector2 bgPos{0.0,0.0};
     float Speed{4.0};
 
+
+    Texture2D knight_idle = LoadTexture("character/knight_idle_spritesheet.png");
+    Texture2D knight_run = LoadTexture("character/knight_run_spritesheet.png");
     Texture2D knight = LoadTexture("character/knight_idle_spritesheet.png");
     Vector2 knightPos{windowDimensions[0]/2.0f -4.0f * (0.5* (float)knight.width/6.0), windowDimensions[1]/2.0f - 4.0f *(0.5*(float)knight.height)};
     //1: facing right, -1: facing left
@@ -42,6 +45,9 @@ int main(){
             //set bgPos = bgPos - directions
             bgPos=Vector2Subtract(bgPos, Vector2Scale(Vector2Normalize(directions), Speed));
             directions.x<0.f?rightLeft=-1.f:rightLeft=1.f;
+            knight = knight_run;
+        }else{
+            knight = knight_idle;
         }
 
         bgPos.x = Clamp(bgPos.x, -(map.width * 4.0f - windowDimensions[0]), 0.0f);
