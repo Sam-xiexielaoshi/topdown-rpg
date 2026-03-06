@@ -12,8 +12,7 @@ int main()
     // initialize window
     InitWindow(windowWidth, windowHeight, "RPG - Run Paglu");
 
-    Character knight;
-    knight.setScreenPos(windowWidth, windowHeight);
+    Character knight{windowWidth, windowHeight};
 
     // set target FPS
     SetTargetFPS(60);
@@ -33,8 +32,8 @@ int main()
         // draw the background
         DrawTextureEx(map, bgPos, 0.0, mapScale, WHITE);
         knight.tick(GetFrameTime());
-        //check map bounds
-        if(knight.getWorldPos().x<0.f||knight.getWorldPos().y<0.f||knight.getWorldPos().x+windowWidth>map.width*mapScale||knight.getWorldPos().y+windowHeight>map.height*mapScale)
+        // check map bounds
+        if (knight.getWorldPos().x < 0.f || knight.getWorldPos().y < 0.f || knight.getWorldPos().x + windowWidth > map.width * mapScale || knight.getWorldPos().y + windowHeight > map.height * mapScale)
         {
             knight.undoMovement();
         }
