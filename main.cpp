@@ -28,9 +28,6 @@ int main()
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        // bgPos.x = Clamp(bgPos.x, -(map.width * mapScale - windowWidth), 0.0f);
-        // bgPos.y = Clamp(bgPos.y, -(map.height * mapScale - windowHeight), 0.0f);
-
         bgPos = Vector2Scale(knight.getWorldPos(), -1.f);
 
         // draw the background
