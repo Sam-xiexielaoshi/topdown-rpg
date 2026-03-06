@@ -23,8 +23,8 @@ int main()
     Enemy goblin
     {
         Vector2{},
-            LoadTexture("character/goblin_idle_spritesheet.png"),
-            LoadTexture("character/goblin_run_spritesheet.png")
+        LoadTexture("character/goblin_idle_spritesheet.png"),
+        LoadTexture("character/goblin_run_spritesheet.png")
     };
     // set target FPS
     SetTargetFPS(60);
