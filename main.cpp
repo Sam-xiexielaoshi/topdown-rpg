@@ -39,7 +39,7 @@ int main()
         //check map bounds
         if(knight.getWorldPos().x<0.f||knight.getWorldPos().y<0.f||knight.getWorldPos().x+windowWidth>map.width*mapScale||knight.getWorldPos().y+windowHeight>map.height*mapScale)
         {
-            DrawText("Out of bounds!", 10, 10, 20, RED);
+            knight.undoMovement();
         }
 
         EndDrawing();

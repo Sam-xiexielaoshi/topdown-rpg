@@ -6,13 +6,15 @@ public:
     Vector2 getWorldPos(){return worldPos;}
     void setScreenPos(int winWidth, int winHeight);
     void tick(float deltaTime);
+    void undoMovement();
 
 private:
     Texture2D texture{LoadTexture("character/knight_idle_spritesheet.png")};
     Texture2D idle{LoadTexture("character/knight_idle_spritesheet.png")};
     Texture2D run{LoadTexture("character/knight_run_spritesheet.png")};
-    Vector2 screenPos;
-    Vector2 worldPos;
+    Vector2 screenPos{};
+    Vector2 worldPos{};
+    Vector2 worldPosLastFrame{};
     float rightLeft{1.0f};
     float runningTime{};
     int frame{};
