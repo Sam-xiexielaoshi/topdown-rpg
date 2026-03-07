@@ -57,8 +57,6 @@ void Character::tick(float deltaTime)
     Rectangle source{0.f, 0.f, static_cast<float>(sword.width) * rightLeft, static_cast<float>(sword.height)};
     Rectangle dest{getScreenPos().x + offset.x, getScreenPos().y + offset.y, sword.width * scale, sword.height * scale};
     DrawTexturePro(sword, source, dest, origin, rotation, WHITE);
-
-    DrawRectangleLines(swordCollisionRec.x, swordCollisionRec.y, swordCollisionRec.width, swordCollisionRec.height, RED);
 }
 
 void Character::takeDamage(float damage)
