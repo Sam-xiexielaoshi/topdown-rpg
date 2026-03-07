@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Prop.h"
 #include "Enemy.h"
+#include <string>
 
 int main()
 {
@@ -20,12 +21,10 @@ int main()
         Prop{Vector2{600.f, 300.f}, LoadTexture("nature_tileset/Rock.png")},
         Prop{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")}};
 
-    Enemy goblin
-    {
+    Enemy goblin{
         Vector2{},
         LoadTexture("character/goblin_idle_spritesheet.png"),
-        LoadTexture("character/goblin_run_spritesheet.png")
-    };
+        LoadTexture("character/goblin_run_spritesheet.png")};
     goblin.setTarget(&knight);
     // set target FPS
     SetTargetFPS(60);
@@ -66,10 +65,25 @@ int main()
             }
         }
 
+        if (!knight.getAlive())
+        {
+            DrawText("Game Over!", 55.f, 45.f, 40, RED);
+            EndDrawing();
+            continue;
+        }
+        else
+        {
+            std::string knightsHealth = "Health:";
+            knightsHealth.append(std::to_string(static_cast<int>(knight.getHealth())), 0, 5);
+            DrawText(knightsHealth.c_str(), 55.f, 45.f, 40, RED);
+        }
+
         goblin.tick(GetFrameTime());
 
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            if(CheckCollisionRecs(goblin.getCollisionRec(), knight.getCollisionRec())){
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getCollisionRec()))
+            {
                 goblin.setAlive(false);
             }
         }
