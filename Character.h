@@ -6,12 +6,14 @@ class Character : public BaseCharacter
 {
 public:
     Character(int winWidth, int winHeight);
-    virtual void tick(float deltaTime)override;
-    virtual Vector2 getScreenPos()override;
+    virtual void tick(float deltaTime) override;
+    virtual Vector2 getScreenPos() override;
 
 private:
-int windowWidth{};
-int windowHeight{};
+    int windowWidth{};
+    int windowHeight{};
+    Texture2D sword{LoadTexture("character/weapon_sword.png")};
+    Rectangle swordCollisionRec{};
 };
 
 #endif
