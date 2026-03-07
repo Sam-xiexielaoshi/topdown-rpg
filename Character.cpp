@@ -60,3 +60,10 @@ void Character::tick(float deltaTime)
 
     DrawRectangleLines(swordCollisionRec.x, swordCollisionRec.y, swordCollisionRec.width, swordCollisionRec.height, RED);
 }
+
+void Character::takeDamage(float damage)
+{
+    health -= damage;
+    if (health < 0.f)
+        health = 0.f;
+}
